@@ -1,0 +1,17 @@
+One Dark Pro Blur
+
+This product includes modified theme files derived from One Dark Pro Enhanced:
+https://github.com/hadez8877/one-dark-pro-enhanced
+
+Copyright 2025 Fabricio Pasapera Viera (@Hadez)
+
+Modifications made in 2026:
+- Added Zed blurred-background appearance metadata.
+- Added alpha transparency to window and surface backgrounds.
+- Made editor, panel, tab bar, terminal, toolbar, gutter, and scrollbar track
+  backgrounds transparent.
+- Added Light, Medium, and Heavy opacity variants.
+- Renamed generated themes to identify them as modified Blur variants.
+
+The transparency approach was informed by Catppuccin Blur for Zed:
+https://github.com/jenslys/zed-catppuccin-blur

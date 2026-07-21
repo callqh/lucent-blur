@@ -1,0 +1,4 @@
+__pycache__/
+.theme_schema_cache.json
+.DS_Store
+.impeccable.md
