@@ -30,7 +30,7 @@ jobs:
         run: python generate_themes.py
 
       - name: Check generated themes are committed
-        run: git diff --exit-code -- themes/one-dark-pro-blur.json
+        run: git diff --exit-code -- themes/
 
       - name: Validate Zed theme
         run: python scripts/validate_theme.py

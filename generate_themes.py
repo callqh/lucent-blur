@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate blurred One Dark Pro themes from the vendored upstream themes.
+"""Generate blurred themes from the vendored upstream themes.
 
-The generated theme files are modified derivatives of One Dark Pro Enhanced.
-See NOTICE and LICENSE for attribution and licensing details.
+The generated theme files are modified derivatives of One Dark Pro Enhanced
+and Quiet Light. See NOTICE and LICENSE for attribution and licensing details.
 """
 
 from __future__ import annotations
@@ -14,7 +14,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCE_DIR = ROOT / "upstream" / "themes"
-OUTPUT_FILE = ROOT / "themes" / "one-dark-pro-blur.json"
+QUIET_LIGHT_SOURCE = ROOT / "upstream" / "quiet-light" / "quiet-light.json"
+THEME_DIR = ROOT / "themes"
 
 # Alpha is expressed as the final byte in Zed's #RRGGBBAA colors.
 BLUR_LEVELS = {
@@ -44,6 +45,23 @@ SOURCE_FILES = (
     "oneDark-Pro-flat.json",
     "oneDark-Pro-mix.json",
     "oneDark-Pro-night-flat.json",
+)
+
+THEME_GROUPS = (
+    {
+        "name": "One Dark Pro Blur",
+        "author": (
+            "One Dark Pro Enhanced contributors; blur adaptation contributors"
+        ),
+        "sources": tuple(SOURCE_DIR / source_file for source_file in SOURCE_FILES),
+        "output": THEME_DIR / "one-dark-pro-blur.json",
+    },
+    {
+        "name": "Quiet Light Blur",
+        "author": "blaqat; blur adaptation contributors",
+        "sources": (QUIET_LIGHT_SOURCE,),
+        "output": THEME_DIR / "quiet-light-blur.json",
+    },
 )
 
 TRANSPARENT_LAYERS = (
@@ -112,32 +130,41 @@ def apply_blur(source_theme: dict, level: str) -> dict:
         "border.transparent",
         "border.disabled",
     ):
-        style[key] = with_alpha(style[key], "30")
+        if isinstance(style.get(key), str):
+            style[key] = with_alpha(style[key], "30")
 
     style["scrollbar.thumb.border"] = "#00000000"
     return theme
 
 
-def main() -> None:
+def generate_theme_group(group: dict) -> int:
     generated = {
         "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
-        "name": "One Dark Pro Blur",
-        "author": "One Dark Pro Enhanced contributors; blur adaptation contributors",
+        "name": group["name"],
+        "author": group["author"],
         "themes": [],
     }
 
-    for source_file in SOURCE_FILES:
-        source = json.loads((SOURCE_DIR / source_file).read_text(encoding="utf-8"))
+    for source_file in group["sources"]:
+        source = json.loads(source_file.read_text(encoding="utf-8"))
         for source_theme in source["themes"]:
             for level in BLUR_LEVELS:
                 generated["themes"].append(apply_blur(source_theme, level))
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_FILE.write_text(
+    output_file = group["output"]
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_text(
         json.dumps(generated, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(f"Generated {len(generated['themes'])} themes in {OUTPUT_FILE}")
+    count = len(generated["themes"])
+    print(f"Generated {count} themes in {output_file}")
+    return count
+
+
+def main() -> None:
+    total = sum(generate_theme_group(group) for group in THEME_GROUPS)
+    print(f"Generated {total} themes total")
 
 
 if __name__ == "__main__":

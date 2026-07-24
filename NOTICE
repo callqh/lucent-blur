@@ -15,3 +15,19 @@ Modifications made in 2026:
 
 The transparency approach was informed by Catppuccin Blur for Zed:
 https://github.com/jenslys/zed-catppuccin-blur
+
+This product also includes a modified theme derived from Quiet Light for Zed:
+https://github.com/biaqat/quiet-light-theme-zed
+
+Copyright © 2024 blaqat
+
+Quiet Light for Zed is provided under the MIT License. Its copyright notice
+and license text are preserved in upstream/quiet-light/LICENSE.
+
+Modifications made in 2026:
+- Added Zed blurred-background appearance metadata.
+- Added alpha transparency to window and surface backgrounds.
+- Made editor, panel, tab bar, terminal, toolbar, gutter, and scrollbar track
+  backgrounds transparent.
+- Added Light, Medium, and Heavy opacity variants.
+- Renamed generated themes to identify them as modified Blur variants.

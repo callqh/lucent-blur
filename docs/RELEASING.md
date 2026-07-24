@@ -25,7 +25,7 @@ For the first publication, add this repository as a submodule in your
 ```toml
 [one-dark-pro-blur-theme]
 submodule = "extensions/one-dark-pro-blur-theme"
-version = "0.1.0"
+version = "0.2.0"
 ```
 
 Then open a pull request from `callqh/extensions` to
@@ -47,6 +47,7 @@ pull request.
 
 ## Upstream synchronization
 
-The **Sync Upstream Theme** workflow runs every Monday at 04:00 UTC and can also
-be started manually. When One Dark Pro Enhanced changes, it opens a pull request
-containing the vendored files, provenance commit, and regenerated blur themes.
+The **Sync Upstream Themes** workflow runs every Monday at 04:00 UTC and can
+also be started manually. When One Dark Pro Enhanced or Quiet Light changes, it
+opens a pull request containing the vendored files, provenance commits, and
+regenerated blur themes.

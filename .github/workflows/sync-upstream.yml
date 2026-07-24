@@ -1,4 +1,4 @@
-name: Sync Upstream Theme
+name: Sync Upstream Themes
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Sync One Dark Pro Enhanced
+      - name: Sync upstream themes
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python sync_upstream.py
@@ -32,15 +32,17 @@ jobs:
           token: ${{ secrets.COMMITTER_TOKEN || github.token }}
           branch: automation/sync-upstream
           delete-branch: true
-          commit-message: "chore: sync One Dark Pro Enhanced"
-          title: "chore: sync One Dark Pro Enhanced"
+          commit-message: "chore: sync upstream themes"
+          title: "chore: sync upstream themes"
           body: |
-            Automated synchronization with the latest One Dark Pro Enhanced themes.
+            Automated synchronization with the latest upstream themes.
 
             - Updates vendored upstream theme files
-            - Records the upstream commit
-            - Regenerates all One Dark Pro Blur variants
+            - Records the upstream commits
+            - Regenerates all blur variants
           add-paths: |
             upstream/themes/**
             upstream/one-dark-pro-enhanced.commit
+            upstream/quiet-light/**
             themes/one-dark-pro-blur.json
+            themes/quiet-light-blur.json

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync vendored One Dark Pro Enhanced themes and regenerate blur variants."""
+"""Sync vendored upstream themes and regenerate blur variants."""
 
 from __future__ import annotations
 
@@ -12,10 +12,30 @@ from generate_themes import SOURCE_FILES, main as generate_themes
 
 
 ROOT = Path(__file__).resolve().parent
-UPSTREAM_REPOSITORY = "hadez8877/one-dark-pro-enhanced"
-UPSTREAM_BRANCH = "main"
-COMMIT_FILE = ROOT / "upstream" / "one-dark-pro-enhanced.commit"
-THEME_DIR = ROOT / "upstream" / "themes"
+UPSTREAMS = (
+    {
+        "name": "One Dark Pro Enhanced",
+        "repository": "hadez8877/one-dark-pro-enhanced",
+        "branch": "main",
+        "commit_file": ROOT / "upstream" / "one-dark-pro-enhanced.commit",
+        "files": tuple(
+            (f"themes/{filename}", ROOT / "upstream" / "themes" / filename)
+            for filename in SOURCE_FILES
+        ),
+    },
+    {
+        "name": "Quiet Light for Zed",
+        "repository": "biaqat/quiet-light-theme-zed",
+        "branch": "main",
+        "commit_file": ROOT / "upstream" / "quiet-light" / "quiet-light.commit",
+        "files": (
+            (
+                "themes/quiet-light.json",
+                ROOT / "upstream" / "quiet-light" / "quiet-light.json",
+            ),
+        ),
+    },
+)
 
 
 def request(url: str) -> bytes:
@@ -33,39 +53,43 @@ def request(url: str) -> bytes:
         return response.read()
 
 
-def latest_commit() -> str:
+def latest_commit(repository: str, branch: str) -> str:
     url = (
-        f"https://api.github.com/repos/{UPSTREAM_REPOSITORY}/commits/"
-        f"{UPSTREAM_BRANCH}"
+        f"https://api.github.com/repos/{repository}/commits/"
+        f"{branch}"
     )
     payload = json.loads(request(url))
     return payload["sha"]
 
 
-def download_theme(commit: str, filename: str) -> bytes:
+def download_theme(repository: str, commit: str, source_path: str) -> bytes:
     url = (
-        f"https://raw.githubusercontent.com/{UPSTREAM_REPOSITORY}/"
-        f"{commit}/themes/{filename}"
+        f"https://raw.githubusercontent.com/{repository}/"
+        f"{commit}/{source_path}"
     )
     content = request(url)
     theme = json.loads(content)
     if not isinstance(theme.get("themes"), list) or not theme["themes"]:
-        raise ValueError(f"Upstream theme file is invalid: {filename}")
+        raise ValueError(f"Upstream theme file is invalid: {source_path}")
     return content
 
 
 def main() -> None:
-    commit = latest_commit()
-    THEME_DIR.mkdir(parents=True, exist_ok=True)
+    for upstream in UPSTREAMS:
+        repository = upstream["repository"]
+        commit = latest_commit(repository, upstream["branch"])
+        for source_path, destination in upstream["files"]:
+            content = download_theme(repository, commit, source_path)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(content)
+            print(f"Synced {upstream['name']}: {source_path}")
 
-    for filename in SOURCE_FILES:
-        content = download_theme(commit, filename)
-        (THEME_DIR / filename).write_bytes(content)
-        print(f"Synced {filename}")
+        commit_file = upstream["commit_file"]
+        commit_file.parent.mkdir(parents=True, exist_ok=True)
+        commit_file.write_text(commit + "\n", encoding="utf-8")
+        print(f"Synced {upstream['name']} at {commit}")
 
-    COMMIT_FILE.write_text(commit + "\n", encoding="utf-8")
     generate_themes()
-    print(f"Synced One Dark Pro Enhanced at {commit}")
 
 
 if __name__ == "__main__":

@@ -11,13 +11,14 @@
 > [One Dark Pro Enhanced](https://github.com/hadez8877/one-dark-pro-enhanced).
 > It is not an official One Dark Pro project.
 
-A translucent, blurred take on the familiar One Dark Pro palette for
-[Zed](https://zed.dev). It preserves the original syntax and terminal colors
-while giving the editor, panels, tabs, and terminal a native blurred backdrop.
+A translucent, blurred take on the familiar One Dark Pro and Quiet Light
+palettes for [Zed](https://zed.dev). It preserves the original syntax and
+terminal colors while giving the editor, panels, tabs, and terminal a native
+blurred backdrop.
 
 ## Features
 
-- Five One Dark Pro color variants
+- Five One Dark Pro color variants and one Quiet Light variant
 - Three transparency levels for every variant
 - Native Zed `blurred` window appearance
 - Transparent editor, panel, tab bar, terminal, toolbar, and gutter layers
@@ -35,6 +36,7 @@ Each color variant is available in Light, balanced, and Heavy opacity levels.
 | One Dark Pro Flat | Light, balanced, Heavy |
 | One Dark Pro Mix | Light, balanced, Heavy |
 | One Dark Pro Night Flat | Light, balanced, Heavy |
+| Quiet Light | Light, balanced, Heavy |
 
 Opacity naming refers to the strength of the window background:
 
@@ -42,7 +44,8 @@ Opacity naming refers to the strength of the window background:
 - No suffix: balanced, approximately 84% window opacity
 - `[Heavy]`: least transparent, approximately 88% window opacity
 
-For most setups, start with the balanced theme: `One Dark Pro (Blur)`.
+For most dark setups, start with `One Dark Pro (Blur)`. For a bright,
+translucent workspace, select `Quiet Light (Blur)`.
 
 ## Installation
 
@@ -99,8 +102,8 @@ check the [Zed issue tracker](https://github.com/zed-industries/zed/issues).
 
 ### Generating themes
 
-The generated theme contains 15 variants: five color palettes multiplied by
-three opacity levels.
+The generated themes contain 18 variants: five One Dark Pro palettes and one
+Quiet Light palette, each multiplied by three opacity levels.
 
 Run the generator after changing blur values or replacing upstream themes:
 
@@ -110,14 +113,15 @@ python3 generate_themes.py
 
 The generator:
 
-1. Reads One Dark Pro Enhanced themes from `upstream/themes`.
+1. Reads One Dark Pro Enhanced and Quiet Light themes from `upstream`.
 2. Preserves their syntax, terminal, text, and semantic colors.
 3. Applies blur-specific transparency and surface overrides.
-4. Writes the result to `themes/one-dark-pro-blur.json`.
+4. Writes the results to `themes/one-dark-pro-blur.json` and
+   `themes/quiet-light-blur.json`.
 
 > [!WARNING]
-> Do not edit `themes/one-dark-pro-blur.json` directly. It is generated and will
-> be overwritten the next time `generate_themes.py` runs.
+> Do not edit files in `themes/` directly. They are generated and will be
+> overwritten the next time `generate_themes.py` runs.
 
 ### Customizing blur levels
 
@@ -125,13 +129,14 @@ Edit `BLUR_LEVELS` in `generate_themes.py` to tune window, surface, active-tab,
 and active-line opacity. Edit `TRANSPARENT_LAYERS` to change which Zed surfaces
 allow the window backdrop to show through.
 
-The tracked upstream revision is recorded in
-`upstream/one-dark-pro-enhanced.commit`. Run `python3 sync_upstream.py` to fetch
-the latest One Dark Pro Enhanced themes and regenerate all blur variants.
+Tracked upstream revisions are recorded in
+`upstream/one-dark-pro-enhanced.commit` and
+`upstream/quiet-light/quiet-light.commit`. Run `python3 sync_upstream.py` to
+fetch the latest themes and regenerate all blur variants.
 
 ### Automated releases
 
-GitHub Actions validate every change, check One Dark Pro Enhanced for updates,
+GitHub Actions validate every change, check the upstream themes for updates,
 create versioned GitHub Releases, and open Zed extension store update pull
 requests.
 
@@ -140,9 +145,10 @@ the required `COMMITTER_TOKEN`, initial store publication, and release steps.
 
 ## License
 
-This project retains the Apache License 2.0 used by One Dark Pro Enhanced. See
-[LICENSE](LICENSE) and [NOTICE](NOTICE) for license terms, attribution, and a
-summary of modifications.
+This project retains the Apache License 2.0 used by One Dark Pro Enhanced.
+Quiet Light is used under the MIT License. See [LICENSE](LICENSE),
+[NOTICE](NOTICE), and the vendored upstream license files for terms,
+attribution, and a summary of modifications.
 
 ## Credits
 
@@ -150,6 +156,8 @@ summary of modifications.
   original One Dark Pro theme.
 - [One Dark Pro Enhanced](https://github.com/hadez8877/one-dark-pro-enhanced) by
   Hadez for the Zed color themes used as this project's foundation.
+- [Quiet Light for Zed](https://github.com/biaqat/quiet-light-theme-zed) by
+  blaqat for the Quiet Light palette and syntax colors.
 - [Zed](https://github.com/zed-industries/zed) for native transparent and blurred
   theme support.
 
