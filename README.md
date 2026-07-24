@@ -23,7 +23,7 @@ unpredictable wallpapers.
 - Native Zed `blurred` window appearance
 - Transparent editor, panel, tab bar, terminal, toolbar, and gutter layers
 - High-clarity active tabs, selections, icons, and active-line highlights
-- Reproducible theme generation from vendored upstream files
+- Three curated variants in a single, easy-to-maintain theme file
 
 ## Theme variants
 
@@ -34,6 +34,20 @@ unpredictable wallpapers.
 | Lucent Blur Light | Light |
 
 For most dark setups, start with `Lucent Blur Mix`.
+
+## Previews
+
+### Lucent Blur Mix
+
+![Lucent Blur Mix preview](assets/lucent-blur-mix.jpg)
+
+### Lucent Blur Flat
+
+![Lucent Blur Flat preview](assets/lucent-blur-flat.jpg)
+
+### Lucent Blur Light
+
+![Lucent Blur Light preview](assets/lucent-blur-light.jpg)
 
 ## Installation
 
