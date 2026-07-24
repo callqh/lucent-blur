@@ -1,4 +1,4 @@
-One Dark Pro Blur
+Lucent Blur
 
 This product includes modified theme files derived from One Dark Pro Enhanced:
 https://github.com/hadez8877/one-dark-pro-enhanced
@@ -10,8 +10,10 @@ Modifications made in 2026:
 - Added alpha transparency to window and surface backgrounds.
 - Made editor, panel, tab bar, terminal, toolbar, gutter, and scrollbar track
   backgrounds transparent.
-- Added Light, Medium, and Heavy opacity variants.
-- Renamed generated themes to identify them as modified Blur variants.
+- Retained the Mix and Flat palettes as focused dark variants.
+- Reworked tabs, selections, icons, editor lines, and focus states with
+  independent Lucent Blur interaction colors.
+- Renamed generated themes under the independent Lucent Blur series.
 
 The transparency approach was informed by Catppuccin Blur for Zed:
 https://github.com/jenslys/zed-catppuccin-blur
@@ -22,12 +24,14 @@ https://github.com/biaqat/quiet-light-theme-zed
 Copyright © 2024 blaqat
 
 Quiet Light for Zed is provided under the MIT License. Its copyright notice
-and license text are preserved in upstream/quiet-light/LICENSE.
+and license text are preserved in LICENSES/quiet-light-MIT.txt.
 
 Modifications made in 2026:
 - Added Zed blurred-background appearance metadata.
 - Added alpha transparency to window and surface backgrounds.
 - Made editor, panel, tab bar, terminal, toolbar, gutter, and scrollbar track
   backgrounds transparent.
-- Added Light, Medium, and Heavy opacity variants.
-- Renamed generated themes to identify them as modified Blur variants.
+- Retained one focused light variant.
+- Reworked tabs, selections, icons, editor lines, and focus states with
+  independent Lucent Blur interaction colors.
+- Renamed the generated theme under the independent Lucent Blur series.

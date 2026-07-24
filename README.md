@@ -1,4 +1,4 @@
-# One Dark Pro Blur for Zed
+# Lucent Blur for Zed
 
 > [!NOTE]
 > Blur is rendered by Zed and the operating system. Its appearance may differ
@@ -7,52 +7,40 @@
 <!-- Separate consecutive GitHub admonitions. -->
 
 > [!IMPORTANT]
-> This is an independent blur adaptation of
-> [One Dark Pro Enhanced](https://github.com/hadez8877/one-dark-pro-enhanced).
-> It is not an official One Dark Pro project.
+> Lucent Blur is an independent theme series. Its syntax palettes are derived
+> from [One Dark Pro Enhanced](https://github.com/hadez8877/one-dark-pro-enhanced)
+> and [Quiet Light for Zed](https://github.com/biaqat/quiet-light-theme-zed),
+> while its translucent surfaces and interaction colors are maintained here.
 
-A translucent, blurred take on the familiar One Dark Pro and Quiet Light
-palettes for [Zed](https://zed.dev). It preserves the original syntax and
-terminal colors while giving the editor, panels, tabs, and terminal a native
-blurred backdrop.
+Three focused themes for [Zed](https://zed.dev) that preserve familiar syntax
+and terminal colors while providing an independently tuned translucent UI.
+Tabs, selections, icons, active lines, and focus states stay readable over
+unpredictable wallpapers.
 
 ## Features
 
-- Five One Dark Pro color variants and one Quiet Light variant
-- Three transparency levels for every variant
+- Two dark themes and one light theme
 - Native Zed `blurred` window appearance
 - Transparent editor, panel, tab bar, terminal, toolbar, and gutter layers
-- Refined active tabs and active-line highlights for translucent backgrounds
+- High-clarity active tabs, selections, icons, and active-line highlights
 - Reproducible theme generation from vendored upstream files
 
 ## Theme variants
 
-Each color variant is available in Light, balanced, and Heavy opacity levels.
-
-| Color variant | Available themes |
+| Theme | Appearance |
 | --- | --- |
-| One Dark Pro | Light, balanced, Heavy |
-| One Dark Pro Darker | Light, balanced, Heavy |
-| One Dark Pro Flat | Light, balanced, Heavy |
-| One Dark Pro Mix | Light, balanced, Heavy |
-| One Dark Pro Night Flat | Light, balanced, Heavy |
-| Quiet Light | Light, balanced, Heavy |
+| Lucent Blur Mix | Dark |
+| Lucent Blur Flat | Dark |
+| Lucent Blur Light | Light |
 
-Opacity naming refers to the strength of the window background:
-
-- `[Light]`: most transparent, approximately 60% window opacity
-- No suffix: balanced, approximately 84% window opacity
-- `[Heavy]`: least transparent, approximately 88% window opacity
-
-For most dark setups, start with `One Dark Pro (Blur)`. For a bright,
-translucent workspace, select `Quiet Light (Blur)`.
+For most dark setups, start with `Lucent Blur Mix`.
 
 ## Installation
 
 Clone the repository:
 
 ```sh
-git clone https://github.com/callqh/one-dark-pro-blur.git
+git clone https://github.com/callqh/lucent-blur.git
 ```
 
 Then install it as a local Zed extension:
@@ -60,8 +48,8 @@ Then install it as a local Zed extension:
 1. Open Zed.
 2. Open the Extensions page.
 3. Select **Install Dev Extension**.
-4. Choose the cloned `one-dark-pro-blur` directory.
-5. Open the theme selector and select a theme containing `(Blur)`.
+4. Choose the cloned `lucent-blur` directory.
+5. Open the theme selector and select a theme beginning with `Lucent Blur`.
 
 You can also run `zed: install dev extension` from the command palette.
 
@@ -81,11 +69,11 @@ the transparent panel surface:
 }
 ```
 
-You can select the balanced theme directly in Zed settings:
+You can select the recommended dark theme directly in Zed settings:
 
 ```json
 {
-  "theme": "One Dark Pro (Blur)"
+  "theme": "Lucent Blur Mix"
 }
 ```
 
@@ -100,55 +88,34 @@ check the [Zed issue tracker](https://github.com/zed-industries/zed/issues).
 
 ## Development
 
-### Generating themes
+The canonical theme file is `themes/lucent-blur.json`. It contains Mix and Flat
+for dark appearance, plus Light for bright environments.
 
-The generated themes contain 18 variants: five One Dark Pro palettes and one
-Quiet Light palette, each multiplied by three opacity levels.
+When tuning the themes, keep source syntax and terminal colors intact and focus
+Lucent-specific changes on translucent surfaces, tabs, selections, icons,
+focus borders, and editor-line hierarchy.
 
-Run the generator after changing blur values or replacing upstream themes:
+Validate changes against Zed's official theme schema:
 
 ```sh
-python3 generate_themes.py
+python -m pip install -r requirements-dev.txt
+python scripts/validate_theme.py
 ```
-
-The generator:
-
-1. Reads One Dark Pro Enhanced and Quiet Light themes from `upstream`.
-2. Preserves their syntax, terminal, text, and semantic colors.
-3. Applies blur-specific transparency and surface overrides.
-4. Writes the results to `themes/one-dark-pro-blur.json` and
-   `themes/quiet-light-blur.json`.
-
-> [!WARNING]
-> Do not edit files in `themes/` directly. They are generated and will be
-> overwritten the next time `generate_themes.py` runs.
-
-### Customizing blur levels
-
-Edit `BLUR_LEVELS` in `generate_themes.py` to tune window, surface, active-tab,
-and active-line opacity. Edit `TRANSPARENT_LAYERS` to change which Zed surfaces
-allow the window backdrop to show through.
-
-Tracked upstream revisions are recorded in
-`upstream/one-dark-pro-enhanced.commit` and
-`upstream/quiet-light/quiet-light.commit`. Run `python3 sync_upstream.py` to
-fetch the latest themes and regenerate all blur variants.
 
 ### Automated releases
 
-GitHub Actions validate every change, check the upstream themes for updates,
-create versioned GitHub Releases, and open Zed extension store update pull
-requests.
+GitHub Actions validate every change, create versioned GitHub Releases, and
+open Zed extension store update pull requests.
 
-See [Releasing One Dark Pro Blur](docs/RELEASING.md) for repository settings,
+See [Releasing Lucent Blur](docs/RELEASING.md) for repository settings,
 the required `COMMITTER_TOKEN`, initial store publication, and release steps.
 
 ## License
 
 This project retains the Apache License 2.0 used by One Dark Pro Enhanced.
 Quiet Light is used under the MIT License. See [LICENSE](LICENSE),
-[NOTICE](NOTICE), and the vendored upstream license files for terms,
-attribution, and a summary of modifications.
+[NOTICE](NOTICE), and [LICENSES](LICENSES) for terms, attribution, and a
+summary of modifications.
 
 ## Credits
 
@@ -168,4 +135,5 @@ upstream-driven generation directly inspired this project.
 
 ---
 
-Built with appreciation for the One Dark Pro, Catppuccin, and Zed communities.
+Built with appreciation for the One Dark Pro, Quiet Light, Catppuccin, and Zed
+communities.

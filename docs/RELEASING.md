@@ -1,4 +1,4 @@
-# Releasing One Dark Pro Blur
+# Releasing Lucent Blur
 
 ## Repository setup
 
@@ -23,9 +23,9 @@ For the first publication, add this repository as a submodule in your
 `callqh/extensions` fork and add the matching `extensions.toml` entry:
 
 ```toml
-[one-dark-pro-blur-theme]
-submodule = "extensions/one-dark-pro-blur-theme"
-version = "0.2.0"
+[lucent-blur-theme]
+submodule = "extensions/lucent-blur-theme"
+version = "0.3.0"
 ```
 
 Then open a pull request from `callqh/extensions` to
@@ -38,16 +38,9 @@ Follow Zed's current extension publishing requirements when preparing that PR.
 2. Select `patch`, `minor`, or `major`.
 3. Run the workflow from `main`.
 
-The workflow updates `extension.toml`, regenerates and validates the themes,
-commits the release, creates a version tag, publishes a GitHub Release, and
-opens the Zed store update pull request.
+The workflow updates `extension.toml`, validates the themes, commits the
+release, creates a version tag, publishes a GitHub Release, and opens the Zed
+store update pull request.
 
 Store publication completes after the Zed maintainers approve and merge that
 pull request.
-
-## Upstream synchronization
-
-The **Sync Upstream Themes** workflow runs every Monday at 04:00 UTC and can
-also be started manually. When One Dark Pro Enhanced or Quiet Light changes, it
-opens a pull request containing the vendored files, provenance commits, and
-regenerated blur themes.
