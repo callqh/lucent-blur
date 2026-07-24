@@ -4,50 +4,24 @@
 > Blur is rendered by Zed and the operating system. Its appearance may differ
 > between macOS, Linux, Windows, and individual window compositors.
 
-<!-- Separate consecutive GitHub admonitions. -->
-
-> [!IMPORTANT]
-> Lucent Blur is an independent theme series. Its syntax palettes are derived
-> from [One Dark Pro Enhanced](https://github.com/hadez8877/one-dark-pro-enhanced)
-> and [Quiet Light for Zed](https://github.com/biaqat/quiet-light-theme-zed),
-> while its translucent surfaces and interaction colors are maintained here.
-
 Three focused themes for [Zed](https://zed.dev) that preserve familiar syntax
 and terminal colors while providing an independently tuned translucent UI.
 Tabs, selections, icons, active lines, and focus states stay readable over
 unpredictable wallpapers.
 
-## Features
-
-- Two dark themes and one light theme
-- Native Zed `blurred` window appearance
-- Transparent editor, panel, tab bar, terminal, toolbar, and gutter layers
-- High-clarity active tabs, selections, icons, and active-line highlights
-- Three curated variants in a single, easy-to-maintain theme file
-
-## Theme variants
-
-| Theme | Appearance |
-| --- | --- |
-| Lucent Blur Mix | Dark |
-| Lucent Blur Flat | Dark |
-| Lucent Blur Light | Light |
-
-For most dark setups, start with `Lucent Blur Mix`.
-
 ## Previews
 
 ### Lucent Blur Mix
 
-![Lucent Blur Mix preview](assets/lucent-blur-mix.jpg)
+![Lucent Blur Mix preview](assets/lucent-blur-mix.png)
 
 ### Lucent Blur Flat
 
-![Lucent Blur Flat preview](assets/lucent-blur-flat.jpg)
+![Lucent Blur Flat preview](assets/lucent-blur-flat.png)
 
 ### Lucent Blur Light
 
-![Lucent Blur Light preview](assets/lucent-blur-light.jpg)
+![Lucent Blur Light preview](assets/lucent-blur-light.png)
 
 ## Installation
 
