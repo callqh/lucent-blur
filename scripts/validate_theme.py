@@ -64,6 +64,20 @@ QUIET_CHROME_KEYS = {
     "editor.active_line.background",
     "editor.highlighted_line.background",
 }
+EXPECTED_STRUCTURE_COLORS_BY_APPEARANCE = {
+    "dark": {
+        "border": "#7f8aa32e",
+        "border.variant": "#7f8aa320",
+        "editor.indent_guide": "#7f8aa324",
+        "editor.indent_guide_active": "#7f8aa34c",
+    },
+    "light": {
+        "border": "#52657b30",
+        "border.variant": "#52657b24",
+        "editor.indent_guide": "#52657b28",
+        "editor.indent_guide_active": "#52657b50",
+    },
+}
 
 
 def main() -> None:
@@ -107,6 +121,16 @@ def main() -> None:
                 raise ValueError(
                     f"{item['name']} {key} must use quiet chrome RGB "
                     f"{expected_chrome_rgb}, got {actual_chrome_rgb}"
+                )
+        expected_structure_colors = EXPECTED_STRUCTURE_COLORS_BY_APPEARANCE[
+            item["appearance"]
+        ]
+        for key, expected_color in expected_structure_colors.items():
+            actual_color = item["style"][key].lower()
+            if actual_color != expected_color:
+                raise ValueError(
+                    f"{item['name']} {key} must use structure color "
+                    f"{expected_color}, got {actual_color}"
                 )
 
     manifest = MANIFEST_FILE.read_text(encoding="utf-8")
