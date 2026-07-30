@@ -51,6 +51,19 @@ EXPECTED_ALPHA_BY_LEVEL = {
         "editor.active_line.background": "2c",
     },
 }
+EXPECTED_CHROME_RGB_BY_APPEARANCE = {
+    "dark": "#7f8aa3",
+    "light": "#52657b",
+}
+QUIET_CHROME_KEYS = {
+    "element.active",
+    "element.selected",
+    "ghost_element.active",
+    "ghost_element.selected",
+    "tab.active_background",
+    "editor.active_line.background",
+    "editor.highlighted_line.background",
+}
 
 
 def main() -> None:
@@ -84,6 +97,16 @@ def main() -> None:
                 raise ValueError(
                     f"{item['name']} {key} must use alpha "
                     f"{expected_alpha}, got {actual_alpha}"
+                )
+        expected_chrome_rgb = EXPECTED_CHROME_RGB_BY_APPEARANCE[
+            item["appearance"]
+        ]
+        for key in QUIET_CHROME_KEYS:
+            actual_chrome_rgb = item["style"][key][:7].lower()
+            if actual_chrome_rgb != expected_chrome_rgb:
+                raise ValueError(
+                    f"{item['name']} {key} must use quiet chrome RGB "
+                    f"{expected_chrome_rgb}, got {actual_chrome_rgb}"
                 )
 
     manifest = MANIFEST_FILE.read_text(encoding="utf-8")
