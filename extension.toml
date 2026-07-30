@@ -1,6 +1,6 @@
 id = "lucent-blur-theme"
 name = "Lucent Blur"
-version = "0.3.0"
+version = "0.4.0"
 schema_version = 1
 authors = ["callqh"]
 description = "Three focused palettes with Light, Blur, and Heavy translucent Zed surfaces"
