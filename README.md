@@ -4,9 +4,10 @@
 > Blur is rendered by Zed and the operating system. Its appearance may differ
 > between macOS, Linux, Windows, and individual window compositors.
 
-Three focused themes for [Zed](https://zed.dev) that preserve familiar syntax
-and terminal colors while providing an independently tuned translucent UI.
-Tabs, selections, icons, active lines, and focus states stay readable over
+Three focused color palettes for [Zed](https://zed.dev), each available in
+Light, Blur, and Heavy transparency levels. They preserve familiar syntax and
+terminal colors while providing an independently tuned translucent UI. Tabs,
+selections, icons, active lines, and focus states stay readable over
 unpredictable wallpapers.
 
 ## Previews
@@ -61,7 +62,7 @@ You can select the recommended dark theme directly in Zed settings:
 
 ```json
 {
-  "theme": "Lucent Blur Mix"
+  "theme": "Lucent Blur Mix [Heavy]"
 }
 ```
 
@@ -77,7 +78,8 @@ check the [Zed issue tracker](https://github.com/zed-industries/zed/issues).
 ## Development
 
 The canonical theme file is `themes/lucent-blur.json`. It contains Mix and Flat
-for dark appearance, plus Light for bright environments.
+for dark appearance, plus Light for bright environments. Each palette has
+Light, Blur, and Heavy transparency levels.
 
 When tuning the themes, keep source syntax and terminal colors intact and focus
 Lucent-specific changes on translucent surfaces, tabs, selections, icons,

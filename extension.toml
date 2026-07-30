@@ -3,5 +3,5 @@ name = "Lucent Blur"
 version = "0.3.0"
 schema_version = 1
 authors = ["callqh"]
-description = "Three focused dark and light themes with readable translucent Zed surfaces"
+description = "Three focused palettes with Light, Blur, and Heavy translucent Zed surfaces"
 repository = "https://github.com/callqh/lucent-blur"
