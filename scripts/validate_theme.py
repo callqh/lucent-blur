@@ -66,16 +66,18 @@ QUIET_CHROME_KEYS = {
 }
 EXPECTED_STRUCTURE_COLORS_BY_APPEARANCE = {
     "dark": {
-        "border": "#7f8aa32e",
-        "border.variant": "#7f8aa320",
-        "editor.indent_guide": "#7f8aa324",
-        "editor.indent_guide_active": "#7f8aa34c",
+        "border": "#abb2bf24",
+        "border.variant": "#abb2bf18",
+        "editor.indent_guide": "#abb2bf20",
+        "editor.indent_guide_active": "#abb2bf40",
+        "editor.wrap_guide": "#abb2bf18",
+        "editor.active_wrap_guide": "#abb2bf30",
     },
     "light": {
-        "border": "#52657b30",
-        "border.variant": "#52657b24",
-        "editor.indent_guide": "#52657b28",
-        "editor.indent_guide_active": "#52657b50",
+        "border": "#7c89982c",
+        "border.variant": "#7c89981c",
+        "editor.indent_guide": "#7c899824",
+        "editor.indent_guide_active": "#7c899844",
     },
 }
 
